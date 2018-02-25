@@ -15,7 +15,9 @@ public class Article {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
 
+    private String auther;
+
     private String content;
 
-    private Integer dateTime;
+    private Long dateTime;
 }
