@@ -4,6 +4,9 @@ import com.alibaba.fastjson.JSONObject;
 import com.dong.leaf.model.HttpRes;
 import com.dong.leaf.model.User;
 import com.dong.leaf.service.inf.IUserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,13 +20,15 @@ import java.util.Objects;
  */
 @RestController
 @RequestMapping("user")
+@Api("User")
 public class UserController {
 
     @Autowired
     private IUserService userService;
 
+    @ApiOperation(value = "用户登录")
     @PostMapping("/login")
-    public HttpRes login(@RequestBody()String request){
+    public HttpRes login(@ApiParam(value = "request")@RequestBody()String request){
         HttpRes httpRes = HttpRes.getHttpRes();
 
         User loginUser = JSONObject.parseObject(request,User.class);
@@ -44,8 +49,10 @@ public class UserController {
 
         return httpRes;
     }
+
+    @ApiOperation(value = "注册用户")
     @PostMapping("/register")
-    public HttpRes register(@RequestBody()String request){
+    public HttpRes register(@ApiParam(value = "request")@RequestBody()String request){
         HttpRes httpRes = HttpRes.getHttpRes();
         User registerUser = JSONObject.parseObject(request,User.class);
         userService.addUser(registerUser);

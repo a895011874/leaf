@@ -18,13 +18,14 @@ import java.util.List;
  */
 @RestController
 @Api("Article")
+@RequestMapping(value = "article")
 public class ArticleController {
 
     @Autowired
     private IArticleService articleService;
 
     @ApiOperation(value = "创建")
-    @PostMapping("article")
+    @PostMapping("/addAritcle")
     public HttpRes createArticle(@ApiParam(value = "article")@RequestBody String articleJson){
 
         HttpRes httpRes = new HttpRes();
@@ -37,8 +38,7 @@ public class ArticleController {
     }
 
     @ApiOperation(value="获取所有")
-    @GetMapping("articles")
-    @RequestMapping()
+    @GetMapping("/findArticles")
     public HttpRes findArticles(){
         HttpRes httpRes = new HttpRes();
         List<Article> articles = articleService.findAllArticle();
