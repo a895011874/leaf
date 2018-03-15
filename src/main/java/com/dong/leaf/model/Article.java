@@ -14,10 +14,11 @@ public class Article {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
-
     private String auther;
 
     private String content;
 
     private Long dateTime;
+
+
 }

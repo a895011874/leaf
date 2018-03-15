@@ -38,6 +38,7 @@ public class ArticleController {
 
     @ApiOperation(value="获取所有")
     @GetMapping("articles")
+    @RequestMapping()
     public HttpRes findArticles(){
         HttpRes httpRes = new HttpRes();
         List<Article> articles = articleService.findAllArticle();
