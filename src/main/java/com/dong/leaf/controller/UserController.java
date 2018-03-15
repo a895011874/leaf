@@ -47,7 +47,10 @@ public class UserController {
     @PostMapping("/register")
     public HttpRes register(@RequestBody()String request){
         HttpRes httpRes = HttpRes.getHttpRes();
+        User registerUser = JSONObject.parseObject(request,User.class);
+        userService.addUser(registerUser);
 
+        httpRes.setMsg("创建成功").setState("200");
         return httpRes;
     }
 }
